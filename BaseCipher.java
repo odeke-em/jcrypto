@@ -4,15 +4,6 @@ import javax.crypto.spec.IvParameterSpec;
 import java.security.NoSuchAlgorithmException;
 
 public class BaseCipher {
-    public class CipherInitArg {
-        public String name;
-        public String specification;
-        public String encryptionKey;
-        public String iv;
-        public int requiredIvLength;
-        public int requiredEncryptionKeyLength;
-    }
-
     private String name;
     private String specification;
 
