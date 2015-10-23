@@ -83,6 +83,7 @@ public class BaseCipher {
         return this.name;
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (obj == null)
             return false;
@@ -90,7 +91,14 @@ public class BaseCipher {
         if (obj.getClass() != this.getClass())
             return false;
 
-        // TODO: finish me
-        return false;
+        BaseCipher other = (BaseCipher)obj;
+
+        if (this.name != other.name || this.specification != other.specification)
+            return false;
+
+        if (this.keypair == null || other.keypair == null)
+            return this.keypair == null && other.keypair == null;
+
+        return this.keypair == other.keypair;
     }
 }

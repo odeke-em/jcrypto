@@ -96,4 +96,22 @@ public class KeyPair implements Cloneable {
 
         return copy;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+
+        if (obj.getClass() != this.getClass())
+            return false;
+
+        KeyPair other = (KeyPair)obj;
+        if (this.requiredIVLength != other.requiredIVLength)
+            return false;
+
+        if (this.requiredEncryptionKeyLength != other.requiredEncryptionKeyLength)
+            return false;
+
+        return this.Iv == other.Iv && this.EncryptionKey == other.EncryptionKey;
+    }
 }
