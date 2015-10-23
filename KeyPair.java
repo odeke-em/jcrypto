@@ -1,6 +1,6 @@
 import java.io.UnsupportedEncodingException;
 
-public class KeyPair {
+public class KeyPair implements Cloneable {
     public String Iv;
     public String EncryptionKey;
 
@@ -83,5 +83,17 @@ public class KeyPair {
 
     public byte[] ivUTF8Bytes() throws UnsupportedEncodingException, Exception {
         return KeyPair.getUTF8Bytes(this.Iv);
+    }
+
+    @Override
+    public Object clone() {
+        KeyPair copy = null;
+        try {
+            copy = new KeyPair(this.EncryptionKey, this.Iv, this.requiredEncryptionKeyLength, this.requiredIVLength);
+        } catch (Exception ex) {
+            System.out.println("clone: err " + ex);
+        }
+
+        return copy;
     }
 }

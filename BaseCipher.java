@@ -34,7 +34,10 @@ public class BaseCipher {
         if (kp == null)
             throw new Exception("keyPair not initialized! must be non-null");
 
-        this.keypair = kp;
+        this.keypair = (KeyPair)kp.clone();
+        if (this.keypair == null)
+            throw new Exception("keyPair not initialized! must be non-null");
+
         this.name = name;
         this.specification = specification;
         this.initInnardCipher();
